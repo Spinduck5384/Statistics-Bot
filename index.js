@@ -15,51 +15,31 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', async () => {
-	console.log('Ready');
+	
 
 	if (!client.application?.owner) await client.application?.fetch();
 
-		for (const file of commandFiles) {
-			const command = require(`./commands/${file}`);
-			let data = command.data;
-			const guild_commands = await client.guilds.cache.get(guild_id)?.commands.create(data);
-			console.log(`created ${command.data.name}`);
-		}
+	for (const file of commandFiles) {
+		const command = require(`./commands/${file}`);
+		let data = command.data;
+		const guild_commands = await client.guilds.cache.get(guild_id)?.commands.create(data);
+		console.log(`created ${command.data.name}`);
+	}
 
-		// /*Obtaining command info*/
-		// console.log(await client.application.commands.fetch()) global commands
-		// console.log(await client.guilds.cache.get(guild_id)?.commands.fetch()) guild commands
+	// /*Deleting Commands*/
+	//await client.application.commands.delete("id") //global commands
+	//await client.guilds.cache.get(guild_id)?.commands.delete("874258629417639948") //guild commands
+	
 
-		// /*Deleting Commands*/
-		// await client.application.commands.delete("id") global commands
-		// await client.guilds.cache.get(guild_id)?.commands.delete("id") guild commands
+	// /*Obtaining command info*/
+	//console.log(await client.application.commands.fetch()) //global commands
+	//console.log(await client.guilds.cache.get(guild_id)?.commands.fetch()) //guild commands
+
+	console.log('Ready');
 
 	}
 
 );
-
-// client.on("messageCreate", async message => {
-// 	if (!client.application?.owner) await client.application?.fetch();
-
-// 	if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application?.owner.id) {
-
-// 		for (const file of commandFiles) {
-// 			const command = require(`./commands/${file}`);
-// 			let data = command.data;
-// 			const guild_commands = await client.guilds.cache.get(guild_id)?.commands.create(data);
-// 			console.log(`created ${command.data.name}`);
-// 		}
-
-// 		// /*Obtaining command info*/
-// 		// console.log(await client.application.commands.fetch()) global commands
-// 		// console.log(await client.guilds.cache.get(guild_id)?.commands.fetch()) guild commands
-
-// 		// /*Deleting Commands*/
-// 		// await client.application.commands.delete("id") global commands
-// 		// await client.guilds.cache.get(guild_id)?.commands.delete("id") guild commands
-
-// 	}
-// });
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
