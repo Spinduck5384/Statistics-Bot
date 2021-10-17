@@ -100,6 +100,42 @@ module.exports = {
 					.setTimestamp()
 
 			return interaction.reply({ embeds: [answerEmbed] });
+		} else {
+			var total_of_set = 0
+			
+			for (let num = 0; num < dataset.length; num ++) {
+				
+				total_of_set += num_dataset[num]
+
+				
+			}
+
+			const mean = total_of_set/num_dataset.length
+			
+			var sum_of_WIP = 0
+			
+			for (let num = 0; num < dataset.length; num ++) {
+				
+				sum_of_WIP += Math.abs(num_dataset[num] - mean) ** 2 
+
+			}
+
+			const sum_of = sum_of_WIP
+
+			const sd = Math.sqrt(sum_of/(dataset.length-1))
+
+			let answerEmbed = new MessageEmbed()
+					.setColor('GREEN')
+					.setTitle('Standard Deviation Calculated!')
+					.addField('Formula Used', "Sample", false)
+					.addField('Dataset', `${dataset}`, false)
+					.addField('Standard Deviation', `${sd}`, false)
+					.addField('Dataset Length', `${dataset.length}`, false)
+					.addField('Total of Dataset Values', `${total_of_set}`, false)
+					.addField('Mean', `${mean}`, false)
+					.setTimestamp()
+
+			return interaction.reply({ embeds: [answerEmbed] });
 		}
 	},
 };
