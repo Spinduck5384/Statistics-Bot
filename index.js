@@ -28,7 +28,7 @@ client.once('ready', async () => {
 
 	// /*Deleting Commands*/
 	//await client.application.commands.delete("id") //global commands
-	//await client.guilds.cache.get(guild_id)?.commands.delete("874258629417639948") //guild commands
+	//await client.guilds.cache.get(guild_id)?.commands.delete("##########") //guild commands
 	
 
 	// /*Obtaining command info*/
